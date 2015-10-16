@@ -1,0 +1,14 @@
+{
+  "name": "node_lp",
+  "description": "",
+  "version": "0.0.1",
+  "main": "./app.js",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "express-handlebars": "^2.0.1",
+    "express-session": "^1.11.3",
+    "lodash": "^3.10.1",
+    "needle": "^0.10.0"
+  }
+}

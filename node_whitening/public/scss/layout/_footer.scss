@@ -1,0 +1,178 @@
+#footer {
+  border-top: 1px solid #eee;
+  letter-spacing: -5px;
+  padding: 19px 0;
+
+  @include media("<tablet") {
+    letter-spacing: 0;
+    padding: 0;
+  }
+
+  ul {
+    @extend %listreset;
+  }
+
+  .link {
+    font: 14px/19px $base-font-sans-serif;
+    width: 33.33%;
+    display:inline-block;
+    vertical-align:top;
+    letter-spacing: 0;
+    overflow: hidden;
+    padding: 6px 0 0;
+
+    @include media("<tablet") {
+      width: 100%;
+      display: block;
+      margin: 15px 0;
+      text-align: center;
+    }
+
+    ul {
+      display:inline-block;
+      vertical-align:top;
+    }
+
+    li {
+      float: left;
+      position: relative;
+      margin: 0 19px 0 0;
+
+      @include media("<tablet") {
+        margin: 0 10px;
+      }
+
+      &:first-child {
+        &:before {
+          display: none;
+        }
+      }
+
+      &:before {
+        content: '';
+        background: #959595;
+        width: 2px;
+        height: 13px;
+        position: absolute;
+        left: -11px;
+        top: 3px;
+      }
+    }
+
+    a {
+      color: #626262;
+      text-decoration: none;
+
+      &:hover {
+        color: darken(#626262, 30%);
+      }
+    }
+
+    &.link-right {
+      text-align: right;
+
+      @include media("<tablet") {
+        text-align: center;
+      }
+
+      li {
+        margin: 0 0 0 20px;
+
+        @include media("<tablet") {
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+}
+
+.social-links {
+  width: 33.33%;
+  display:inline-block;
+  vertical-align:top;
+  letter-spacing: 0;
+  text-align: center;
+
+  @include media("<tablet") {
+    width: 100%;
+    display: block;
+  }
+
+  ul {
+    overflow: hidden;
+  }
+
+  li {
+    display:inline-block;
+    vertical-align:middle;
+    margin: 0 3px 6px;
+  }
+
+  a {
+    display:inline-block;
+    vertical-align:middle;
+    width: 32px;
+    height: 32px;
+    text-decoration: none;
+
+    &:after {
+      content: '';
+      height: 32px;
+      width: 1px;
+      display:inline-block;
+      vertical-align:middle;
+      width: 1px;
+      overflow: hidden;
+    }
+
+    &.facebook {
+      background: #3b5998;
+      font-size: 15px;
+      line-height: 20px;
+
+      &:hover {
+        background: darken(#3b5998, 15%);
+      }
+    }
+
+    &.twitter {
+      background: #02b0e8;
+      font-size: 14px;
+      line-height: 19px;
+
+      &:hover {
+        background: darken(#02b0e8, 15%);
+      }
+    }
+
+    &.youtube {
+      background: #c4302a;
+      font-size: 12px;
+      line-height: 17px;
+
+      &:hover {
+        background: darken(#c4302a, 15%);
+      }
+    }
+
+    &.google {
+      background: #be2933;
+      font-size: 14px;
+      line-height: 19px;
+
+      &:hover {
+        background: darken(#be2933, 15%);
+      }
+    }
+  }
+
+  [class^="icon-"] {
+    color: $white;
+    display:inline-block;
+    vertical-align:middle;
+
+    &.icon-facebook {
+      margin: -4px 0 0;
+    }
+  }
+}

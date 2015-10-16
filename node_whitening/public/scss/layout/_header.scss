@@ -1,0 +1,52 @@
+#header {
+  background: #232323;
+}
+
+.steps {
+  @extend %listreset;
+  font-size: 22px;
+  line-height: 27px;
+  font-weight: 100;
+  letter-spacing: -6px;
+  overflow: hidden;
+
+  @include media("<tablet") {
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0 -15px;
+  }
+
+  li {
+    background: $light-gray;
+    display:inline-block;
+    vertical-align:top;
+    width: 33.33%;
+    text-align: center;
+    letter-spacing: 0;
+    color: #ffc300;
+    border-left: 2px solid #232323;
+    padding: 13px;
+
+    @include media("<tablet") {
+      padding: 13px 5px;
+    }
+
+    &:first-child {
+      border: none;
+    }
+
+    &.active {
+      background: #f63440;
+      color: $light-gray;
+    }
+
+    span {
+      font-family: $base-font-sanchez;
+      font-weight: normal;
+      color: $white;
+      @include media("<desktop") {
+        display: block;
+      }
+    }
+  }
+}

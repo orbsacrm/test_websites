@@ -1,0 +1,49 @@
+<div class="col-md-6 col-md-offset-3 text-center">
+  <h3><i class="fa fa-check"></i> Thanks {{customer.details.first}}!</h3>
+  <p>
+    Your order was placed with {{conf.app.name}}.
+  </p>
+
+  {{#if conf.orbsa.upsell.enabled}}
+    <div id="upsell-sorry" style="display:none">
+      <hr>
+      <h3><i class="fa fa-thumbs-down"></i> Sorry {{customer.details.first}}..</h3>
+      <p>
+        It looks like there was a problem with the payment, try contacting us to get it sorted out.
+        Anyway, thanks for the purchase and we hope you enjoy your products!
+      </p>
+    </div>
+    <div id="upsell-thanks" style="display:none">
+      <hr>
+      <h4><i class="fa fa-check"></i> Thanks again!</h4>
+      <p>
+        Your upsell order was placed as well, we hope you enjoy your products.
+      </p>
+    </div>
+    <div id="upsell-offer">
+      <br>
+      <div class="text-left well">
+        <p>
+          {{customer.details.first}}, did you also want to take advantage of this additional deal that
+          we only offer to subscription member customers?
+        </p>
+        <hr>
+        <h4>{{upsell.name}}</h4>
+        <p>{{upsell.description}}</p>
+        <p class="text-center">
+          <br>
+          <button class="btn btn-success btn-lg" id="accept-upsell">
+            <i class="fa fa-plus"></i> Add it to my order ({{upsell.price_human}})
+          </button>
+          <button class="btn btn-lg" id="deny-upsell">
+            No thanks
+          </button>
+        </p>
+      </div>
+    </div>
+  {{/if}}
+
+  <hr>
+  <p><a href="/" class="tiny">(clear session and return to start)</a></p>
+</div>
+

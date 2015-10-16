@@ -1,0 +1,10 @@
+require('iced-coffee-script').register()
+_ = require 'taky'
+
+task 'build', 'Build the main JS', ->
+  cd __dirname + '/static'
+  await exec "iced -cp -I inline main.iced", defer e,out
+  _.writes __dirname + '/static/main.js', out.trim()
+  log "Finished"
+  exit 1
+

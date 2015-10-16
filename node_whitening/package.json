@@ -1,0 +1,16 @@
+{
+  "name": "node_whitening",
+  "description": "",
+  "version": "0.0.1",
+  "main": "./app.js",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "date-utils": "^1.2.17",
+    "express": "^4.13.3",
+    "express-handlebars": "^2.0.1",
+    "express-session": "^1.11.3",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
+    "needle": "^0.10.0"
+  }
+}

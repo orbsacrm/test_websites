@@ -1,0 +1,150 @@
+<main id="main" role="main" class="step2">
+  <div class="section">
+    <div class="bg-image">
+      <img src="/public/images/img01.png" alt="image description" width="1786" height="1014">
+    </div>
+    <div class="content-holder">
+      <div class="container">
+        <a href="#" class="main-link">mySparklyWhitesPEN<span>.com</span></a>
+        <div class="section-content">
+          <div class="left-col">
+            <h1 class="title"><span>You’re Just One Click Away!</span>Get Ready For Your Celebrity Smile</h1>
+            <div class="text-holder">
+              <div class="trial-holder">
+                <span class="text-exclusive">Exclusive 14 Day Trial</span>
+                <div class="holder">
+                  <div class="img-holder">
+                    <img src="/public/images/img03.png" width="115" height="51" alt="image description">
+                  </div>
+                  <div class="text">
+                    <span>With a <strong>Full 30 day supply</strong></span>
+                    <span>*with Mothly Refills</span>
+                  </div>
+                </div>
+              </div>
+              <form id="promo-form" class="promo-form">
+                <fieldset>
+                  <label for="promo">Enter Promo Code</label>
+                  <div class="input-holder">
+                    <input type="text" id="promo">
+                    <input type="submit" value="Send Now">
+                  </div>
+                </fieldset>
+              </form>
+              <div class="shipping-row">
+                <span class="shipping">Shipping Fee</span>
+                <ul>
+                  <li><a href="#"><img src="/public/images/logotype01.png" alt="FedEx Express" width="95" height="40"></a></li>
+                  <li><span class="text-include">Include Ebooks or Periodicals. No Delays</span></li>
+                  <li>${{offer.cycle.initial_amount_dollars}}</li>
+                </ul>
+              </div>
+              <div class="order-block">
+                <div class="left-block">
+                  <span class="text-order">Your order is expected to arrive:</span>
+                  <span>{{three_days}}</span>
+                </div>
+                <div class="right-block">
+                  <span>Total <strong>${{offer.cycle.initial_amount_dollars}}</strong></span>
+                  </div>
+              </div>
+              <div class="detail-block">
+                <p>*Offer Details: By clicking "Rush My Order" you agree to be charged ${{offer.cycle.inital_amount_dollars}} (USD) for S&amp;H and will receive a 30 days supply of My Sparkly Whites PEN to try for 14 days from today {{today_date}}. If you are satisfied with the effects of My Sparkly Whites PEN, do nothing and 14 days after your initial order ({{fourteen_days}}) you will be billed ${{offer.cycle.cycle_amount_dollars}} (USD), every 30 days thereafter we will send a fresh supply of My Sparkly Whites PEN for ${{offer.cycle.cycle_amount_dollars}} (USD) per shipment. You may cancel your membership at any time by calling.</p>
+              </div>
+            </div>
+          </div>
+          <div class="form-holder">
+            <div class="text-register">
+              <span>Register</span>
+              <span class="text-now">Now</span>
+            </div>
+            <h2>Final Step</h2>
+            <span class="text-simply">Simply Fill out Your Credit Card Information</span>
+            <div class="mb">
+              <div id="flash"></div>
+            </div>
+            <form id="payment-form" class="submit-form">
+              <fieldset>
+                <div class="row">
+                  <label for="card">Card Type</label>
+                  <div class="input-holder">
+                    <select id="card" class="card-type">
+                      <option>VISA</option>
+                      <option>Mastercard</option>
+                      <option>American Express</option>
+                      <option>Discover</option>
+                    </select>
+                    <ul class="logotype-holder">
+                      <li><a href="#"><img src="/public/images/logotype02.png" alt="VISA" width="34" height="21"></a></li>
+                      <li><a href="#"><img src="/public/images/logotype03.png" alt="MasterCard" width="35" height="21"></a></li>
+                      <li><a href="#"><img src="/public/images/logotype04.png" alt="VISA Electrons" width="34" height="21"></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="credit">Credit Card Number</label>
+                  <div class="input-holder">
+                    <input type="text" name="number" id="credit" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <label>Expiration Date</label>
+                  <div class="input-holder">
+                    <select class="month" name="month" required>
+                      <option value="1">01</option>
+                      <option value="2">02</option>
+                      <option value="3">03</option>
+                      <option value="4">04</option>
+                      <option value="5">05</option>
+                      <option value="6">06</option>
+                      <option value="7">07</option>
+                      <option value="8">08</option>
+                      <option value="9">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select>
+                    <select class="year" name="year" required>
+                      <option value="2015">2015</option>
+                      <option value="2016">2016</option>
+                      <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2022">2022</option>
+                      <option value="2023">2023</option>
+                      <option value="2024">2024</option>
+                      <option value="2025">2025</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="cvv">CVV</label>
+                  <div class="input-holder">
+                    <input type="text" id="cvv" name="cvv" required>
+                    <a href="#" class="text-what"> What is this?</a>
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="check-1">
+                    <input id="check-1" type="checkbox" checked required>
+                    <span class="fake-input"></span>
+                    <span class="fake-label">I am at least 18 years old and I agree to the Terms &amp; conditions of the site</span>
+                  </label>
+                </div>
+                <div class="row">
+                  <div class="img-holder">
+                    <a href="#"><img src="/public/images/img10.png" alt="secure payments all major credit &amp; debit cards accepted by paypal mastercard visa" width="238" height="210"></a>
+                  </div>
+                </div>
+                <button type="submit">Send Now</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+

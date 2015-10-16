@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700%7CSanchez' rel='stylesheet'>
+  <title>{{title}} - {{conf.app.name}}</title>
+  <link media="all" rel="stylesheet" href="/public/css/main.css">
+</head>
+<body>
+  <div id="wrapper">
+    <header id="header">
+      <div class="container">
+        <ul class="steps">
+          <li class="{{#if step_1}}active{{/if}}"><span>Step 1</span> Shipping Info</li>
+          <li class="{{#if step_2}}active{{/if}}"><span>Step 2</span> Billing Info</li>
+          <li class="{{#if step_3}}active{{/if}}"><span>Step 3</span> Authorization</li>
+        </ul>
+      </div>
+    </header>
+    
+    {{{body}}}
+
+    <footer id="footer">
+      <div class="container">
+        <div class="link">
+          <ul>
+          <li><a href="#">Blank</a></li>
+            <li><a href="#">Blank</a></li>
+            <li><a href="#">Blank</a></li>
+          </ul>
+        </div>
+        <div class="social-links">
+          <ul>
+            <li><a href="#" class="facebook"><span class="icon-facebook"></span></a></li>
+            <li><a href="#" class="twitter"><span class="icon-twitter"></span></a></li>
+            <li><a href="#" class="youtube"><span class="icon-youtube"></span></a></li>
+            <li><a href="#" class="google"><span class="icon-google"></span></a></li>
+          </ul>
+        </div>
+        <div class="link link-right">
+          <ul>
+            <li><a href="#">Blank</a></li>
+            <li><a href="#">Blank</a></li>
+            <li><a href="#">Blank</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/public/js/jquery-1.11.2.min.js"><\/script>')</script>
+  <script src="/public/js/jquery.main.js"></script>
+  <script src="//{{conf.orbsa.url}}{{conf.orbsa.prefix}}/js"></script>
+  <script src="/public/main.js"></script>
+</body>
+</html>
+

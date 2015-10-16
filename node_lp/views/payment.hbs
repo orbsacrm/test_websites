@@ -1,0 +1,52 @@
+<div class="col-md-7">
+  <h3>Last step, {{customer.details.first}}</h3>
+  <p>Just complete the payment details form and you'll be an official subscription member.</p>
+  <p>Fill out the payment form to complete your purchase of our <strong>{{offer.name}}</strong>.</p>
+  <hr>
+  <p>
+    <ul class="text-muted tiny">
+      <li>Initial method: {{offer.cycle.initial_method}}</li>
+      <li>Initial amount: ${{offer.cycle.initial_amount_dollars}}</li>
+      <li>Trial period: {{offer.cycle.trial_seconds_human}}</li>
+      <li>Cycle price: ${{offer.cycle.cycle_amount_dollars}} every {{offer.cycle.cycle_seconds_human}}</li>
+    </ul>
+  </p>
+</div>
+
+<div class="col-md-5">
+  <input type="hidden" id="flash">
+
+  <form class="form well" id="payment-form" method="post" action="">
+    <img src="/public/cards.png" style="width:135px;margin-top:5px;" class="pull-right">
+
+    <h3 class="form-payment-heading"> 
+      Payment details
+    </h3>
+
+    <hr>
+
+    <label>Card number</label>
+    <input name="number" type="text" class="form-control" placeholder="Valid card number" autofocus required>
+
+    <div class="row">
+      <div class="col-md-6">
+        <label>Expiration</label>
+        <input name="expires" type="text" class="form-control" placeholder="MM/YY" required>
+      </div>
+
+      <div class="col-md-6">
+        <label>CVV code</label>
+        <input name="verification_value" type="text" class="form-control" placeholder="CVV" required>
+      </div>
+    </div>
+
+    <button class="btn btn-lg btn-success btn-block" type="submit">
+      <i class="fa fa-lock"></i>
+      Continue
+    </button>
+  </form>
+  <p class="text-right">
+    <a href="#" class="tiny" id="fill-payment">(fill form)</a>
+  </p>             
+</div>
+

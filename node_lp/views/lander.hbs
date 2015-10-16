@@ -1,0 +1,52 @@
+<div class="col-md-7">
+  <h3>{{offer.name}}</h3>
+  <p>{{offer.description}}</p>
+  <hr>
+  <p>
+    <ul class="text-muted tiny">
+      <li>Initial method: {{offer.cycle.initial_method}}</li>
+      <li>Initial amount: ${{offer.cycle.initial_amount_dollars}}</li>
+      <li>Trial period: {{offer.cycle.trial_seconds_human}}</li>
+      <li>Cycle price: ${{offer.cycle.cycle_amount_dollars}} every {{offer.cycle.cycle_seconds_human}}</li>
+    </ul>
+  </p>
+</div>
+
+<div class="col-md-5">
+  <input type="hidden" id="flash">
+  <form class="form well" id="lead-form" method="post" action="">
+    <h3 class="form-signin-heading">Register now!</h3>
+    <p>Where should we send <em>your first package?</em></p>
+
+    <label class="sr-only">First name</label>
+    <input name="first" type="text" class="form-control" placeholder="First name" required autofocus>
+
+    <label class="sr-only">Last name</label>
+    <input name="last" type="text" class="form-control" placeholder="Last name" required>
+
+    <label class="sr-only">Address</label>
+    <input name="address" type="text" class="form-control" placeholder="Address" required>
+
+    <label class="sr-only">City</label>
+    <input name="city" type="text" class="form-control" placeholder="City" required>
+
+    <label class="sr-only">State</label>
+    <select name="state" class="form-control" placeholder="State" required></select>
+
+    <label class="sr-only">Country</label>
+    <select name="country" class="form-control" placeholder="Country" required></select>
+
+    <label class="sr-only">Zipcode</label>
+    <input name="zipcode" type="text" class="form-control" placeholder="Zipcode" required>
+
+    <label class="sr-only">Email address</label>
+    <input name="email" type="email" class="form-control" placeholder="Email address" required>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">
+      Continue
+    </button>
+  </form>
+  <p class="text-right">
+    <a href="#" class="tiny" id="fill-lead">(fill form)</a>
+  </p>
+</div>
