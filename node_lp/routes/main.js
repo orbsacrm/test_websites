@@ -1,8 +1,7 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2 */
 'use strict';
 
-let
-  _ = require('lodash')
+let _ = require('lodash')
   , express = require('express')
   , conf = require('./../conf')
   , log = require('./../lib/log')
