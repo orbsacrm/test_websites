@@ -16,6 +16,13 @@ $product_details = $b->offer_view($config['offer']);
 
 $product_desc = $product_details['result']['products'][0]['description'];
 $product_desc = str_replace('\n',"<br>",$product_desc);
+$product_photo = $product_details['result']['products'][0]['photos'][0];
+if($product_photo){
+  $product_photo = $product_photo['50x50'];
+  if($product_photo){
+    $product_photo =  '<img src="'.$product_photo.'"/>';
+  }
+}
 
 # form post
 if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -91,14 +98,23 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
           echo "</p>";
         }
       ?>
+      <?php
+      # show errors if they existed with customer creation
+      if($_SESSION['creditResult']){
+        echo "<p><span style='color:crimson'>".$_SESSION['creditResult']."</span><br><p>";
+        $_SESSION['creditResult'] = null;
+      }
+      ?>
+
+
 
       <form class="form well" id="form" method="post">
         <h3 class="form-signin-heading">Payment Information</h2>
         <p>Provide your payment information below.</p>
-        <p><?=$product_desc?></p>
+        <span><?=$product_photo?> <?=$product_desc?></span>
         <p>
           <a href="#" id="fill">(fill form)</a><br>
-          <a href="add_credit.php" target="_blank">(add 5.00$ credit to account)</a>
+          <a href="add_credit.php" target="_self">(add 5.00$ credit to account)</a>
         </p>
 
         <label class="sr-only">Card number</label>
