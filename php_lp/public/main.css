@@ -1,0 +1,84 @@
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+@import url(//fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
+
+body {
+  font-family: 'Lato' sans-serif;
+  color: #323232;
+  font-weight: 400;
+}
+* {
+  border-radius:0!important;
+}
+
+h4.product-name {
+  margin-top:5px;
+}
+
+form h3:first-of-type {
+  margin-top:5px;
+}
+
+img.symbol-logo {
+  margin-top:-3px;
+  margin-right:5px;
+  width:32px;
+}
+
+form#lead-form input.form-control, form#lead-form select.form-control,
+form#payment-form input.form-control, form#payment-form select.form-control {
+  margin-bottom:15px;
+}
+form#lead-form p:first-of-type,
+form#payment-form p:first-of-type {
+  margin-bottom:15px;
+}
+.mt-0 {
+  margin-top:0;
+}
+a.tiny, span.tiny, p.tiny, ul.tiny {
+  font-size:0.95em;
+}
+.dismiss-pointer {
+  cursor:pointer;
+}
+/* CSS for Credit Card Payment form */
+.credit-card-box .panel-title {
+    display: inline;
+    font-weight: bold;
+}
+.credit-card-box .form-control.error {
+    border-color: red;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(255,0,0,0.6);
+}
+.credit-card-box label.error {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box .payment-errors {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box label {
+    display: block;
+}
+/* The old "center div vertically" hack */
+.credit-card-box .display-table {
+    display: table;
+}
+.credit-card-box .display-tr {
+    display: table-row;
+}
+.credit-card-box .display-td {
+    display: table-cell;
+    vertical-align: middle;
+    width: 50%;
+}
+/* Just looks nicer */
+.credit-card-box .panel-heading img {
+    min-width: 180px;
+}
