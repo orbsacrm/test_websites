@@ -6,40 +6,33 @@ require_once(__DIR__.'/deps/class.billing.php');
 session_start();
 
 $b = new Billing($config);
-# page request
+
+$offer = $b->offer_view($config['offer'])['result'];
+$cycle = $offer['cycle'];
+
+# reset session on get
 if($_SERVER['REQUEST_METHOD']=='GET'){
     session_unset();
     session_destroy();
-    $offer = $b->offer_view($config['offer'])['result'];
-    $cycle = $offer['cycle'];
-
 }
 
-# form post
+# create customer
 if($_SERVER['REQUEST_METHOD']=='POST'){
+  header('content-type: text/json');
 
-    # create a new billing instance
+  # attempt to create the customer
+  $res = $b->customer_create($_POST);
 
+  # successfully created the customer
+  if($res['ok']){
 
-    $form = $_POST;
+    # set the customer id into the session
+    $_SESSION['customer'] = $res['result'];
+  }
 
-    # attempt to create the customer
-    $res = $b->customer_create($form);
-
-    # successfully created the customer
-    if($res['ok']){
-
-        # set the customer id into the session
-        $_SESSION['customer'] = $res['result'];
-
-        # goto the payment page
-        header('location: payment.php');
-
-    }else{
-        # set errors to show on the page, something was wrong
-        $errors = $res['errors'];
-    }
-
+  # output the response
+  echo(json_encode($res));
+  die;
 }
 ?>
 <!DOCTYPE html>
@@ -50,7 +43,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Landing page - Orbsa Widgets Company</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/main.css">
+    <link rel="stylesheet" href="public/main.css">
     <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -65,16 +58,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                     <img src="public/symbol.svg" class="symbol-logo" title="Orbsa Widgets Company">
                 </h3>
                 <hr>
-                <?php
-                # show errors if they existed with customer creation
-                if(!empty($errors)){
-                    echo "<p>";
-                    foreach($errors as $str){
-                        echo "<span style='color:crimson'>$str</span><br>";
-                    }
-                    echo "</p>";
-                }
-                ?>
             </div>
         </div>
         <div class="row">
@@ -135,8 +118,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 </div>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="//localhost:8081/v1/js?fresh=1"></script>
-<script src="/public/main.js"></script>
+<script src="<?=$config['url']?>/v1/js?fresh=1"></script>
+<script src="public/main.js"></script>
 </body>
 </html>
 

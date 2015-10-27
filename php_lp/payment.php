@@ -5,8 +5,8 @@ require_once(__DIR__.'/deps/class.billing.php');
 session_start();
 
 if(empty($_SESSION['customer'])){
-    header('location: index.php');
-    die;
+  header('location: index.php');
+  die;
 }
 
 $b = new Billing($config);
@@ -16,21 +16,20 @@ $offer = $b->offer_view($offer_id)['result'];
 $cycle = $offer['cycle'];
 $customer = $b->customer_view($_SESSION['customer'])['result'];
 
-# form post
+# purchase offer
 if($_SERVER['REQUEST_METHOD']=='POST'){
-    $form = $_POST;
-    $billing = [
-        'billing' =>$form
-    ];
-    $res = $b->offer_purchase($_SESSION['customer'],$offer_id,$billing);
-    if($res['ok']){
-        # goto the payment page
-        header('location: thanks.php');
+  header('content-type: text/json');
 
-    }else{
-        # set errors to show on the page, something was wrong
-        $errors = $res['errors'];
-    }
+  $billing = [
+    'billing' => $_POST
+  ];
+
+  # update billing information and purchase offer
+  $res = $b->offer_purchase($_SESSION['customer'],$offer_id,$billing);
+
+  # output the response
+  echo(json_encode($res));
+  die;
 }
 ?>
 <!DOCTYPE html>
@@ -41,7 +40,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Landing page - Orbsa Widgets Company</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/main.css">
+    <link rel="stylesheet" href="public/main.css">
     <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -56,16 +55,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                     <img src="public/symbol.svg" class="symbol-logo" title="Orbsa Widgets Company">
                 </h3>
                 <hr>
-                <?php
-                # show errors if they existed with customer creation
-                if(!empty($errors)){
-                    echo "<p>";
-                    foreach($errors as $str){
-                        echo "<span style='color:crimson'>$str</span><br>";
-                    }
-                    echo "</p>";
-                }
-                ?>
             </div>
         </div>
         <div class="row">
@@ -88,7 +77,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 <input type="hidden" id="flash">
 
                 <form class="form well" id="payment-form" method="post" action="">
-                    <img src="/public/cards.png" style="width:135px;margin-top:5px;" class="pull-right">
+                    <img src="public/cards.png" style="width:135px;margin-top:5px;" class="pull-right">
 
                     <h3 class="form-payment-heading">
                         Payment details
@@ -125,8 +114,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 </div>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="//localhost:8081/v1/js?fresh=1"></script>
-<script src="/public/main.js"></script>
+<script src="<?=$config['url']?>/v1/js?fresh=1"></script>
+<script src="public/main.js"></script>
 </body>
 </html>
 

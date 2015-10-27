@@ -10,6 +10,10 @@ $(function(){
   var flash = function(type,str){
     $('div.flash-alert').remove()
 
+    if(typeof str=='object'){
+      str = _.first(str)
+    }
+
     str = str
       .split('Error: ')
       .join('')
@@ -33,6 +37,10 @@ $(function(){
   _.each(orbsa.geo.countries,function(item){
     var html_item = '<option value=' + item.iso2 + '>' + item.name + '</option>'
     $('form#lead-form select[name=country]').append(html_item)
+  })
+
+  $('form#lead-form,form#payment-form').submit(function(){
+    orbsa.page.lock({image:'balls'})
   })
 
   // select us as default country
@@ -77,14 +85,42 @@ $(function(){
     })
   })
 
+  // ajax lead form submit
+  $('form#lead-form').submit(function(e){
+    e.preventDefault()
+    orbsa.page.lock({image:'balls'})
+    $.post($(this).prop('action'),$(this).serialize(),function(r){
+      if(!r.ok){
+        flash('warning',(r.errors||r.error||"An unknown error occured"))
+        orbsa.page.unlock()
+        return false
+      }else{
+        window.location = 'payment.php'
+      }
+    })
+  })
 
+  // ajax payment form submit
+  $('form#payment-form').submit(function(e){
+    e.preventDefault()
+    orbsa.page.lock({image:'balls'})
+    $.post($(this).prop('action'),$(this).serialize(),function(r){
+      if(!r.ok){
+        flash('warning',(r.errors||r.error||"An unknown error occured"))
+        orbsa.page.unlock()
+        return false
+      }else{
+        window.location = 'thanks.php'
+      }
+    })
+  })
 
   // ajax upsell accept button click
-  /*$('#accept-upsell').click(function(e){
+  $('#accept-upsell').click(function(e){
     e.preventDefault()
     $('#upsell-offer').hide()
     orbsa.page.lock({image:'balls'})
-    $.post('/thanks',{},function(r){
+    $.post('',{},function(r){
       orbsa.page.unlock()
       if(r.error){
         $('#upsell-offer').hide()
@@ -94,7 +130,7 @@ $(function(){
         $('#upsell-thanks').show()
       }
     })
-  })*/
+  })
 
   // ajax upsell accept button click
   $('#deny-upsell').click(function(e){
