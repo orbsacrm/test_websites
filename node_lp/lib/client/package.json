@@ -1,11 +1,12 @@
 {
-  "name": "client",
+  "name": "orbsa-client",
   "description": "",
   "version": "0.0.1",
   "main": "./module",
+  "engines" : { "node" : ">=4.0.0" },
   "dependencies": {
-    "bluebird": "^2.10.1",
     "lodash": "^3.10.1",
-    "needle": "^0.10.0"
+    "needle": "^0.10.0",
+    "querystring": "^0.2.0"
   }
 }
