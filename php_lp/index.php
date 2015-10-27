@@ -67,10 +67,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 <hr>
                 <p>
                 <ul class="text-muted tiny">
-                    <li>Initial method: <?=$cycle['initial_method']?></li>
-                    <li>Initial amount: <?=$cycle['initial_amount_dollars']?></li>
-                    <li>Trial period: <?=$cycle['trial_seconds_human']?></li>
-                    <li>Cycle price: <?=$cycle['cycle_amount_dollars']?> every <?=$cycle['cycle_seconds_human']?></li>
+                  <li>Trial period: <?=$cycle['trial_seconds_human']?></li>
+                  <li>Cycle price: <?=$cycle['cycle_amount_dollars']?> every <?=$cycle['cycle_seconds_human']?></li>
                 </ul>
                 </p>
             </div>
