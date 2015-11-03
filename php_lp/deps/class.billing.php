@@ -440,6 +440,11 @@ class Billing {
     return $this->_send('/v1/subscription/'.$_id.'/discount/create','POST',$discount);
   }
 
+  #remove a discount from a subscription
+  function subscription_remove_discount ($_id) {
+    return $this->_send('/v1/subscription/'.$_id.'/discount/delete','POST');
+  }
+
   # transaction methods
   #get a transaction by id
   function transaction_get ($_id) {
