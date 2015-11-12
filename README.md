@@ -1,5 +1,6 @@
-# Orbsa implementation examples
-- *node_lp*: example of landing page implementation using node.js (3 step)
-- *php_lp*: the same implementation using php (3 step)
-- *node_shop*: ecom implementation using node.js (unfinished)
+<img src="http://orbsa.com/static/logo/default_trim_white.svg" width="300px" />
+
+- `./node_lp`: example of landing page implementation using Node (3 step)
+- `./php_lp`: the same implementation using PHP (3 step)
+- `./node_shop`: ecom implementation using node.js _(unfinished)_
 
