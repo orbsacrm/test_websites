@@ -20,6 +20,7 @@ Table of contents
 - [Template](#template)
 - [Campaign](#campaign)
 - [Usage](#usage)
+- [One Click Upsell](#One Click Upsell)
 
 Customer
 ========
@@ -359,6 +360,19 @@ Campaign
 * email_campaign_delete ($_id)
 * email_campaign_send_test_email ($email,$template,$brand)
 * email_campaign_enqueue_to_send($_id)
+
+One Click Upsell
+========
+
+* email_oneclick_create ($info)
+* email_oneclick_list ()
+* email_oneclick_get ($_id)
+* email_oneclick_update ($id,$info)
+* email_oneclick_delete ($_id)
+* email_oneclick_create_token ($id,$customer_id)
+* email_oneclick_token_get ($token_id)
+* email_oneclick_redeem_token ($token_id)
+* email_oneclick_delete_token ($token_id)
 
 List
 ========

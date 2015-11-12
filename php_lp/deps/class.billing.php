@@ -579,6 +579,48 @@ class Billing {
     return $this->_send('/v1/email/template/'.$_id.'/send' ,'POST', $data);
   }
 
+  #email one click methods
+  #create email one click
+  function email_oneclick_create ($info) {
+    return $this->_send('/v1/email/oneclick','POST', $info);
+  }
+  #list email one click
+  function email_oneclick_list () {
+    return $this->_send('/v1/email/oneclick','GET');
+  }
+  #find email oneclick by id
+  function email_oneclick_get ($_id) {
+    return $this->_send('/v1/email/oneclick/'.$_id,'GET');
+  }
+  #update email oneclick
+  function email_oneclick_update ($id,$info) {
+    return $this->_send('/v1/email/oneclick/'.$id,'POST', $info);
+  }
+  #delete email oneclick
+  function email_oneclick_delete ($_id) {
+    return $this->_send('/v1/email/oneclick/'.$_id ,'DELETE');
+  }
+  #create token email oneclick
+  function email_oneclick_create_token ($id,$customer_id) {
+    $info = [
+      "customer"=>$customer_id
+    ];
+    return $this->_send('/v1/email/oneclick/'.$id.'/create_token','POST', $info);
+  }
+  #find token from email oneclick
+  function email_oneclick_token_get ($token_id) {
+    return $this->_send('/v1/email/oneclick/token'.$token_id,'GET');
+  }
+  #redeem token email oneclick
+  function email_oneclick_redeem_token ($token_id) {
+    return $this->_send('/v1/email/oneclick/token/'.$token_id.'/redeem','POST');
+  }
+
+  #delete token email oneclick
+  function email_oneclick_delete_token ($token_id) {
+    return $this->_send('/v1/email/oneclick/token/'.$token_id,'DELETE');
+  }
+
   #email methods
   /*
    * EmailCampaign properties:
