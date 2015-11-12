@@ -64,7 +64,7 @@ app.get('/',(req,res) => {
 app.post('/',(req,res,next) => {
   client.query('POST /customer/create',req.body,(e,r) => {
     if(e) return next(e);
-    req.session.customer_id = r;
+    req.session.customer_id = r._id;
     res.json({ok:true});
   });
 });
@@ -121,3 +121,4 @@ if(conf.orbsa.upsell.enabled){
 }
 
 module.exports = app;
+

@@ -27,8 +27,8 @@ class Client {
       follow_max: 1,
       username: `token:${opts.key}`,
       auth: 'auto',
-      open_timeout: 5000,
-      read_timeout: 5000,
+      open_timeout: 25000,
+      read_timeout: 50000,
     }
   }
 
