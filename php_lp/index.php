@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   if($res['ok']){
 
     # set the customer id into the session
-    $_SESSION['customer'] = $res['result'];
+    $_SESSION['customer_id'] = $res['result']['_id'];
   }
 
   # output the response
@@ -116,7 +116,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 </div>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="<?=$config['url']?>/v1/js?fresh=1"></script>
+<script src="<?=$config['url']?>/v1/js"></script>
 <script src="public/main.js"></script>
 </body>
 </html>

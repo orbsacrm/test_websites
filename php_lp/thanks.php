@@ -4,7 +4,7 @@ require_once(__DIR__.'/deps/class.billing.php');
 
 session_start();
 
-if(empty($_SESSION['customer'])){
+if(empty($_SESSION['customer_id'])){
   header('location: index.php');
   die;
 }
@@ -14,7 +14,7 @@ $b = new Billing($config);
 $offer_id = $config['offer'];
 $offer = $b->offer_view($offer_id)['result'];
 $cycle = $offer['cycle'];
-$customer = $b->customer_view($_SESSION['customer'])['result'];
+$customer = $b->customer_view($_SESSION['customer_id'])['result'];
 
 # upsell configuration
 if($config['upsell']['enabled']){
@@ -24,7 +24,7 @@ if($config['upsell']['enabled']){
   if($_SERVER['REQUEST_METHOD']=='POST'){
     header('content-type: text/json');
 
-    $res = $b->offer_purchase($_SESSION['customer'],$offer_id,[]);
+    $res = $b->offer_purchase($_SESSION['customer_id'],$offer_id,[]);
 
     echo(json_encode($res));
     die;  
@@ -111,7 +111,7 @@ if($config['upsell']['enabled']){
 </div>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="<?=$config['url']?>/v1/js?fresh=1"></script>
+<script src="<?=$config['url']?>/v1/js"></script>
 <script src="public/main.js"></script>
 </body>
 </html>
