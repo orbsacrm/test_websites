@@ -5,7 +5,9 @@
   <hr>
   <p>
     <ul class="text-muted tiny">
-      <li>Trial period: {{offer.cycle.trial_seconds_human}}</li>
+      {{#if offer.cycle.trial_seconds_human}}
+        <li>Trial period: {{offer.cycle.trial_seconds_human}}</li>
+      {{/if}}
       <li>Cycle price: ${{offer.cycle.cycle_amount_dollars}} every {{offer.cycle.cycle_seconds_human}}</li>
     </ul>
   </p>

@@ -65,7 +65,9 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 <hr>
                 <p>
                 <ul class="text-muted tiny">
-                    <li>Trial period: <?=$cycle['trial_seconds_human']?></li>
+                    <? if($cycle['trial_seconds'] > 0 && !empty($cycle['trial_seconds_human'])){ ?> 
+                      <li>Trial period: <?=$cycle['trial_seconds_human']?></li>
+                    <? } ?>
                     <li>Cycle price: <?=$cycle['cycle_amount_dollars']?> every <?=$cycle['cycle_seconds_human']?></li>
                 </ul>
                 </p>

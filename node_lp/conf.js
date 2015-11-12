@@ -10,12 +10,12 @@ module.exports = {
     key: 'dAfQTBWqSZQJcmchqfKkwdj24KSklKDHnkjrdR9dLpjTEi1cHOfWOfl3K59aqfNf',
     
     // id of the subscription offer to use for the lp
-    offer: '41977v59vnck',
+    offer: '01ad5u2zfwwo',
     
     // optional one-click upsell offer to be shown after purchase
     upsell: {
       enabled: true,
-      offer: '819cw7p9a281',
+      offer: '01ad5u2zfwwo',
     },
 
   },
