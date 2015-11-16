@@ -2,7 +2,7 @@
 
 class Billing {
 
-  var 
+  var
     $conf,
     $ch
     ;
@@ -73,8 +73,8 @@ class Billing {
     return $this->_send('/v1/customer/'.$_id.'/form/append','POST',$details);
   }
   #clear customer form data
-  function customer_clear_form ($_id,$details) {
-    return $this->_send('/v1/customer/'.$_id.'/form/clear','POST',$details);
+  function customer_clear_form ($_id) {
+    return $this->_send('/v1/customer/'.$_id.'/form/clear','POST');
   }
   #list customers
   /*
@@ -243,7 +243,7 @@ class Billing {
     return $this->_send('/v1/product/search','GET',$query);
   }
   # List all products containing `$query` fields
-  function product_list ($query) {
+  function product_list ($query=[]) {
     return $this->_send('/v1/product','GET',$query);
   }
   #Find a product by id
@@ -767,7 +767,7 @@ $fake_customer = [
   'zipcode' => '03142',
   'state' => 'NJ',
   'country' => 'US',
-  'phone' => '424-255-7533', 
+  'phone' => '424-255-7533',
   'ip' => '76.189.188.142',
   'tags' => ['subid1','subid2'],
 ];
@@ -780,4 +780,3 @@ $result = $b->customer_view('0124kueyxxjz');
 echo "Result:";
 print_r($result);
 */
-
