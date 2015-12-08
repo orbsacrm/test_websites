@@ -7,8 +7,8 @@ let
   , express = require('express')
   , conf = require('./conf')
   , log = require('./lib/log')
-  , orbsa = require('./lib/orbsa')
   , exphbs = require('express-handlebars')
+;
 
 let app = express()
 
@@ -21,6 +21,8 @@ app.set('view engine','hbs')
 
 app.use('/public',express.static('./public'))
 
+app.use(require('body-parser').urlencoded({extended:false}))
+
 app.use((req,res,next) => {
   res.locals.conf = conf
   next()
@@ -30,9 +32,13 @@ app.listen(conf.port)
 log(`:${conf.port}`)
 
 for(let file of fs.readdirSync('./routes')){
-  if(file.includes('.js')){
+  if(file.endsWith('.js')){
     app.use('/',require(`./routes/${file}`))
-    log(`loaded ./routes/${file}`)
   }
 }
+
+// handle errors
+app.use((err, req, res, next) => {
+  res.json({error:err.toString()})
+});
 

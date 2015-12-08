@@ -1,6 +1,6 @@
 <div class="row">
 
-  {{#each items}}
+  {{#each offers}}
     <div class="col-sm-6">
       <div class="thumbnail">
         <img src="http://placehold.it/650x450&text=Product" class="img-responsive">
@@ -8,14 +8,14 @@
         <div class="caption">
           <div class="row">
             <div class="col-xs-6">
-              <h4>Galaxy S5</h4>
+              <h5>{{name}}</h5>
             </div>
             <div class="col-xs-6 text-right">
-              <h4>$9.99</h4>
+              <h4>$10.99</h4>
             </div>
           </div>
 
-          <p>32GB, 2GB Ram, 1080HD, 5.1 inches, Android</p>
+          <p>{{description}}</p>
 
           <hr>
 
@@ -24,7 +24,7 @@
               <a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
             </div>
             <div class="col-md-6">
-              <a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a>
+              <a href="#" class="btn btn-success btn-product add-to-cart" data-id="{{_id}}"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a>
             </div>
           </div>
 

@@ -24,7 +24,7 @@ if($config['upsell']['enabled']){
   if($_SERVER['REQUEST_METHOD']=='POST'){
     header('content-type: text/json');
 
-    $res = $b->offer_purchase($_SESSION['customer_id'],$offer_id,[]);
+    $res = $b->offer_purchase($_SESSION['customer_id'],$config['upsell']['offer'],[]);
 
     echo(json_encode($res));
     die;  

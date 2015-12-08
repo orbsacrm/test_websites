@@ -4,10 +4,10 @@ $config = [
   'url' => 'http://127.0.0.1:9051',
   'auth' => true,
   'key' => 'NmatavExCnFtg03cZ61mAopVEuetqUrH2nkBDwRuSfTUCV5njn7oPOUqu1hoh7tb',
-  'offer' => '01ad5u2zfwwo',
+  'offer' => '71al15xxpbk0',
   'upsell' => [
     'enabled'=> true,
-    'offer' => '01ad5u2zfwwo'
+    'offer' => '71al14xvubs0',
   ]
 ];
 

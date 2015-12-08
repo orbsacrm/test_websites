@@ -6,9 +6,19 @@ let
   , express = require('express')
   , conf = require('./../conf')
   , log = require('./../lib/log')
-  , orbsa = require('./../lib/orbsa') 
+  , Client = require('./../lib/client')
+;
 
+let client = new Client(conf.orbsa)
 let app = new express.Router()
+
+// get all offers
+app.use((req,res,next) => {
+  client.query(`GET /offer?per_page=100`,(e,r) => {
+    res.locals.offers = r.items || []
+    next()
+  })
+})
 
 // home
 app.get('/',(req,res) => {
@@ -38,12 +48,7 @@ app.get('/product',(req,res) => {
 app.get('/browse',(req,res) => {
   let data = {
     title: 'Products',
-    items: [],
   }
-
-  while(data.items.length<10)
-    data.items.push(Math.random())
-
   res.render('browse.hbs',data)
 })
 
