@@ -43,6 +43,7 @@ app.get('/',(req,res) => {
   let data = {
     title: 'Welcome',
   };
+
   res.render('home.hbs', data);
 });
 
@@ -50,35 +51,13 @@ app.get('/',(req,res) => {
 app.get('/cart',(req,res) => {
   let data = {
     title: 'Cart',
-    items: req.session.items || [
-      {
-        name: "Product 1",
-        description: "Product 1 is a great solution for everything",
-        photo_url: 'http://placehold.it/100x70',
-        price: 100
-      },
-      {
-        name: "Product 2",
-        description: "Product 2 is another great solution for everything",
-        photo_url: 'http://placehold.it/100x70',
-        price: 10
-      },
-    ],
+    items: req.session.items,
   };
 
   res.render('cart.hbs', data);
 });
 
-// product
-app.get('/product',(req,res) => {
-  let data = {
-    title: 'Product',
-  };
-
-  res.render('product.hbs',data);
-});
-
-app.post('/product/:id/purchase', (req, res) => {
+app.post('/cart/add_product/:id', (req, res) => {
   if(!req.session.items) {
     req.session.items = [];
   }
@@ -89,6 +68,22 @@ app.post('/product/:id/purchase', (req, res) => {
   res.redirect('/browse');
 });
 
+app.post('/cart/remove_product/:id',(req,res) => {
+  console.log(req.session.items);
+  req.session.items = _.filter(req.session.items, (p) => {
+    return p._id !== req.params.id;
+  });
+
+  res.redirect('/cart');
+});
+
+app.get('/product/:id', (req, res) => {
+  let data = _.extend({
+    title: 'Product'
+  }, _.find(res.locals.offers, { _id: req.params.id }));
+
+  res.render('product.hbs', data);
+});
 
 // browse
 app.get('/browse', (req, res) => {
@@ -97,6 +92,36 @@ app.get('/browse', (req, res) => {
   };
 
   res.render('browse.hbs', data);
+});
+
+app.get('/checkout', (req, res) => {
+  res.render('checkout.hbs');
+});
+
+app.post('/checkout', (req, res, next) => {
+  let body = _.reduce(req.body, (memo, value, key) => {
+    if(_.startsWith(key, 'billing.')) {
+      key = key.slice('billing.'.length);
+      memo.billing[key] = value;
+    }
+    memo.customer[key] = value;
+    return memo;
+  }, {
+    billing: {},
+    customer: {},
+  });
+
+  client.query(`POST /customer/create`, body.customer, (err, orbsaRes) => {
+    if(err) return next(err);
+    client.query(`POST /customer/${orbsaRes._id}/billing/update`, body.billing, (err, orbsaRes) => {
+      if(err) return next(err);
+      if(orbsaRes) {
+        return res.redirect('/checkout_success');
+      }
+
+      return res.redirect('/checkout');
+    });
+  });
 });
 
 module.exports = app;

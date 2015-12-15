@@ -1,0 +1,46 @@
+<form method="post" action="/checkout">
+  <div class="form-group">
+    <label for="first">First Name</label>
+    <input name="first" class="form-control" placeholder="First Name"></input>
+  </div>
+
+  <div class="form-group">
+    <label for="last">Last Name</label>
+    <input name="last" class="form-control" placeholder="Last Name"></input>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input name="email" class="form-control" placeholder="Email" required></input>
+    <script>
+       document.querySelector('input[name=email]').value =
+         'testaccount.' + Math.floor(Math.random() * 100000) + '@orbsa.com';
+    </script>
+  </div>
+
+  <div class="form-group">
+    <label>Card number</label>
+    <input value="4470330769941000" name="billing.number" type="text" class="form-control" placeholder="Valid card number" autofocus required>
+  </div>
+
+  <div class="form-group">
+    <label>Zipcode</label>
+    <input value="12345" name="billing.zipcode" type="text" class="form-control" placeholder="Valid card number" autofocus required>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-6">
+      <label>Expiration</label>
+      <input value="12/17" name="billing.expires" type="text" class="form-control" placeholder="MM/YY" required>
+    </div>
+
+    <div class="col-md-6">
+      <label>CVV code</label>
+      <input value="123" name="billing.verification_value" type="text" class="form-control" placeholder="CVV" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Purchase</button>
+  </div>
+</form>
