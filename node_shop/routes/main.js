@@ -144,4 +144,10 @@ app.post('/checkout', (req, res, next) => {
   });
 });
 
+app.get('/checkout_success', (req, res) => {
+  res.render('checkout_success.hbs', {
+    items: req.session.items,
+  });
+});
+
 module.exports = app;
