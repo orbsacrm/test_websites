@@ -52,6 +52,11 @@ app.get('/cart',(req,res) => {
   let data = {
     title: 'Cart',
     items: req.session.items,
+    total: _.reduce(req.session.items, (total, item) => {
+      return total + (item.type === 'cycle' ?
+                      (+item.cycle.initial_charge_amount_cents || 0) :
+                      (+item.flat.price || 0));
+    }, 0),
   };
 
   res.render('cart.hbs', data);
@@ -69,7 +74,6 @@ app.post('/cart/add_product/:id', (req, res) => {
 });
 
 app.post('/cart/remove_product/:id',(req,res) => {
-  console.log(req.session.items);
   req.session.items = _.filter(req.session.items, (p) => {
     return p._id !== req.params.id;
   });
