@@ -105,3 +105,12 @@ h3.menu-logo img {
   width:25px;
 }
 
+a.no-decoration {
+  color: inherit;
+  text-decoration: none;
+}
+
+a.no-decoration:hover {
+  color: inherit;
+  text-decoration: none;
+}

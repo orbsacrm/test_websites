@@ -1,9 +1,11 @@
 <div class="row">
   <div class="col-md-6">
-    <img src="public/toy.jpg" class="product-image">
+    <img src="/public/toy.jpg" class="product-image">
   </div>
+
   <div class="col-md-6">
-    <h3 class="product-title">Small Firetruck Car</h3>
+    <h3 class="product-title">{{name}}</h3>
+
     <p>
       <i class="fa fa-star gold"></i>
       <i class="fa fa-star gold"></i>
@@ -14,23 +16,25 @@
 
     <hr>
 
-    <h4 class="product-price">$9.99</h4>
+    <h4 class="product-price">${{price}}</h4>
 
     <hr>
 
     <div class="row">
       <div class="col-md-6">
         <button type="button" class="btn btn-primary btn-product">
-          <span class="glyphicon glyphicon-thumbs-up"></span> Like 
+          <span class="glyphicon glyphicon-thumbs-up"></span> Like
         </button>
       </div>
+
       <div class="col-md-6">
-        <button type="button" class="btn btn-success btn-product">
-          <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart 
-        </button>
+        <form method="post" action="/cart/add_product/{{_id}}">
+          <button type="submit" class="btn btn-success btn-product">
+            <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
+          </button>
+        </form>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -53,4 +57,3 @@
     </div>
   </div>
 </div>
-

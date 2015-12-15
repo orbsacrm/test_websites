@@ -21,11 +21,14 @@
           <ul class="nav nav-pills pull-right">
             <li role="presentation" class="menu-child" data-name=""><a href="/">Home</a></li>
             <li role="presentation" class="menu-child" data-name="browse"><a href="/browse">Browse products</a></li>
-            <li role="presentation" class="menu-child" data-name="product"><a href="/product">Product</a></li>
             <li role="presentation" class="menu-child" data-name="cart"><a href="/cart">My cart</a></li>
           </ul>
         </nav>
-        <h3 class="text-muted menu-logo"><img src="public/symbol.svg">&nbsp;{{conf.app.name}}</h3>
+
+        <h3 class="text-muted menu-logo">
+          <img src="/public/symbol.svg" />
+          <a href="/" class="no-decoration">{{conf.app.name}}</a>
+        </h3>
       </div>
 
       {{{body}}}
