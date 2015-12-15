@@ -1,12 +1,12 @@
 <form method="post" action="/checkout">
   <div class="form-group">
     <label for="first">First Name</label>
-    <input name="first" class="form-control" placeholder="First Name"></input>
+    <input value="Joe" name="first" class="form-control" placeholder="First Name" required></input>
   </div>
 
   <div class="form-group">
     <label for="last">Last Name</label>
-    <input name="last" class="form-control" placeholder="Last Name"></input>
+    <input value="Doe" name="last" class="form-control" placeholder="Last Name" required></input>
   </div>
 
   <div class="form-group">
@@ -18,14 +18,45 @@
     </script>
   </div>
 
+  <!--   "shipping": {
+       "first": "Melissa",
+       "last": "Feeney",
+       "address": "302 Naomie Coves",
+       "city": "Stoltenberg land",
+       "state": "VT",
+       "country": "US",
+       "zipcode": "57271",
+       "email": "tristian.cremin@hotmail.com"
+  }, -->
+
   <div class="form-group">
-    <label>Card number</label>
-    <input value="4470330769941000" name="billing.number" type="text" class="form-control" placeholder="Valid card number" autofocus required>
+    <label>Shipping Address</label>
+    <input value="302 Naomie Coves" name="shipping.address" type="text" class="form-control" placeholder="Shipping Address" autofocus required>
   </div>
 
   <div class="form-group">
     <label>Zipcode</label>
-    <input value="12345" name="billing.zipcode" type="text" class="form-control" placeholder="Valid card number" autofocus required>
+    <input value="12345" name="shipping.zipcode" type="text" class="form-control" placeholder="Zipcode" autofocus required>
+  </div>
+
+  <div class="form-group">
+    <label>City</label>
+    <input value="New York City" name="shipping.city" type="text" class="form-control" placeholder="City" autofocus required>
+  </div>
+
+  <div class="form-group">
+    <label>State</label>
+    <input value="New York" name="shipping.state" type="text" class="form-control" placeholder="State" autofocus required>
+  </div>
+
+  <div class="form-group">
+    <label>Country</label>
+    <input value="United States" name="shipping.country" type="text" class="form-control" placeholder="Country" autofocus required>
+  </div>
+
+  <div class="form-group">
+    <label>Card number</label>
+    <input value="4470330769941000" name="billing.number" type="text" class="form-control" placeholder="Valid card number" autofocus required>
   </div>
 
   <div class="form-group row">

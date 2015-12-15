@@ -103,11 +103,16 @@ app.post('/checkout', (req, res, next) => {
     if(_.startsWith(key, 'billing.')) {
       key = key.slice('billing.'.length);
       memo.billing[key] = value;
+    } else if(_.startsWith(key, 'shipping.')) {
+      key = key.slice('shipping.'.length);
+      memo.shipping[key] = value;
     }
+
     memo.customer[key] = value;
     return memo;
   }, {
     billing: {},
+    shipping: {},
     customer: {},
   });
 
@@ -121,9 +126,19 @@ app.post('/checkout', (req, res, next) => {
           offers: _.pluck(req.session.items, '_id'),
         };
 
-        client.query(`POST /offer/purchase_bulk`, bulkBody, (err) => {
+        console.log(bulkBody);
+        _.extend(body.shipping, {
+          first: body.customer.first,
+          last: body.customer.last,
+        });
+
+        client.query(`POST /customer/${customer._id}/shipping/update`, body.shipping, (err) => {
           if(err) return next(err);
-          return res.redirect('/checkout_success');
+
+          client.query(`POST /offer/purchase_bulk`, bulkBody, (err) => {
+            if(err) return next(err);
+            return res.redirect('/checkout_success');
+          });
         });
       }
     });
