@@ -126,7 +126,6 @@ app.post('/checkout', (req, res, next) => {
           offers: _.pluck(req.session.items, '_id'),
         };
 
-        console.log(bulkBody);
         _.extend(body.shipping, {
           first: body.customer.first,
           last: body.customer.last,
