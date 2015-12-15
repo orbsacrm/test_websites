@@ -111,15 +111,21 @@ app.post('/checkout', (req, res, next) => {
     customer: {},
   });
 
-  client.query(`POST /customer/create`, body.customer, (err, orbsaRes) => {
+  client.query(`POST /customer/create`, body.customer, (err, customer) => {
     if(err) return next(err);
-    client.query(`POST /customer/${orbsaRes._id}/billing/update`, body.billing, (err, orbsaRes) => {
+    client.query(`POST /customer/${customer._id}/billing/update`, body.billing, (err, orbsaRes) => {
       if(err) return next(err);
       if(orbsaRes) {
-        return res.redirect('/checkout_success');
-      }
+        let bulkBody = {
+          customer: customer._id,
+          offers: _.pluck(req.session.items, '_id'),
+        };
 
-      return res.redirect('/checkout');
+        client.query(`POST /offer/purchase_bulk`, bulkBody, (err) => {
+          if(err) return next(err);
+          return res.redirect('/checkout_success');
+        });
+      }
     });
   });
 });
