@@ -104,6 +104,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
                     <label class="sr-only">Email address</label>
                     <input name="email" type="email" class="form-control" placeholder="Email address" required>
+                    <input name="same_shipping" type="hidden" value="true">
 
                     <button class="btn btn-lg btn-primary btn-block" type="submit">
                         Continue

@@ -218,7 +218,37 @@ class Billing {
 
     return $this->_send('/v1/offer/'.$offer_id.'/purchase','POST',$details);
   }
+  function offer_summary_bulk($customer_id, $offers,$options=[]){
+    $details = [
+        'customer' => $customer_id,
+        'offers' => $offers,
+        'summary'=> true
+    ];
 
+    # apply additional options
+    if(!empty($options)) {
+      foreach($options as $key=>$value){
+        $details[$key] = $value;
+      }
+    }
+
+    return $this->_send('/v1/offer/purchase_bulk','POST',$details);
+  }
+  function offer_purchase_bulk($customer_id, $offers,$options=[]){
+    $details = [
+        'customer' => $customer_id,
+        'offers' => $offers
+    ];
+
+    # apply additional options
+    if(!empty($options)) {
+      foreach($options as $key=>$value){
+        $details[$key] = $value;
+      }
+    }
+
+    return $this->_send('/v1/offer/purchase_bulk','POST',$details);
+  }
   # product methods
   /*
    * Product properties:
