@@ -274,6 +274,7 @@ Subscription
 * subscription_get_schedule ($_id,$limit = 10)
 * subscription_get_discount ($_id)
 * subscription_add_discount ($_id,$discount)
+* subscription_remove_discount ($_id)
 
 Transaction
 ========
